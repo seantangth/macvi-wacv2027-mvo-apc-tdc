@@ -1,0 +1,32 @@
+COMMIT c86a5a6
+== A0 start 2026-11-02T19:02:56+00:00
+test package already extracted (20 videos)
+ALL_ELIGIBLE
+Format checked. The server separately checks scoreability and >=95% supported coverage on every clip.
+sha256 a936b7f8fb7816596394dc8363537f24c62fae76093156b4adbcddcbcf454609
+reproduced sha256 a936b7f8fb7816596394dc8363537f24c62fae76093156b4adbcddcbcf454609
+expected   sha256 76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e
+byte-identical: False
+  clip_092: drift of reproduction vs original = 0.0000 %
+  clip_093: drift of reproduction vs original = 0.0000 %
+  clip_094: drift of reproduction vs original = 0.0000 %
+  clip_095: drift of reproduction vs original = 0.0000 %
+  clip_096: drift of reproduction vs original = 0.0000 %
+  clip_097: drift of reproduction vs original = 0.0000 %
+  clip_098: drift of reproduction vs original = 0.0000 %
+  clip_099: drift of reproduction vs original = 0.0000 %
+  clip_100: drift of reproduction vs original = 0.0000 %
+  clip_101: drift of reproduction vs original = 0.0000 %
+  clip_103: drift of reproduction vs original = 0.0000 %
+  clip_104: drift of reproduction vs original = 0.0000 %
+  clip_105: drift of reproduction vs original = 0.0000 %
+  clip_106: drift of reproduction vs original = 0.0000 %
+  clip_107: drift of reproduction vs original = 0.0000 %
+  clip_108: drift of reproduction vs original = 0.0000 %
+  clip_109: drift of reproduction vs original = 0.0000 %
+  clip_110: drift of reproduction vs original = 0.0000 %
+  clip_111: drift of reproduction vs original = 0.0000 %
+  clip_112: drift of reproduction vs original = 0.0000 %
+mean deviation over 20 clips = 0.0000 %   max = 0.0000 %
+== A0 rc=0 seconds=16
+A0 DONE 2026-11-02T19:03:12+00:00

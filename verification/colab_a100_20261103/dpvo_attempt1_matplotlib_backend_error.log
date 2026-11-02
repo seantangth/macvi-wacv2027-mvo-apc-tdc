@@ -1,0 +1,27 @@
+== apt 2026-11-02T18:36:45+00:00
+cuda-nvcc-12-6:
+  Installed: (none)
+  Candidate: 12.6.85-1
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link
+
+/usr/local/cuda-12
+/usr/local/cuda-12.6
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+== dpvo_env 2026-11-02T18:39:03+00:00
+== [dpvo env] 2026-11-02T18:39:03+00:00
+Downloading...
+From: https://drive.google.com/uc?id=1dRqftpImtHbbIPNBIseCv9EvrlHEnjhX
+To: /content/repo/DPVO/models.zip
+  0%|          | 0.00/13.1M [00:00<?, ?B/s] 12%|█▏        | 1.57M/13.1M [00:00<00:00, 14.8MB/s]100%|██████████| 13.1M/13.1M [00:00<00:00, 69.1MB/s]
+DPVO/dpvo.pth: OK
+dpvo_env rc=0
+== dpvo infer 2026-11-02T18:51:27+00:00
+== [dpvo clip_112] 2026-11-02T18:51:27+00:00
+Full traceback: /content/dpvo_rerun_work/dpvo112/logs/clip_112.log
+[1/1] clip_112: tracking_failed (0.1s)
+INFERENCE_COMPLETE: 1 attempted, 0 predicted
+total 0
+DPVOFIX DONE 2026-11-02T18:51:30+00:00

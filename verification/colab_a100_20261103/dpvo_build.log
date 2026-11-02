@@ -1,0 +1,15 @@
+Processing ./DPVO
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: dpvo
+  Building wheel for dpvo (pyproject.toml): started
+  Building wheel for dpvo (pyproject.toml): finished with status 'done'
+  Created wheel for dpvo: filename=dpvo-0.0.0-cp310-cp310-linux_x86_64.whl size=22389953 sha256=127e578d3efac7b158ec6f8d371cefac5ae27d70be3d9b5ca10dec39e6d63ddc
+  Stored in directory: /tmp/pip-ephem-wheel-cache-dtt10lmo/wheels/23/82/6b/bd71f92844d643313cf494e66f8b1c69aed81be99c0a2a3c64
+Successfully built dpvo
+Installing collected packages: dpvo
+  Attempting uninstall: dpvo
+    Found existing installation: dpvo 0.0.0
+    Uninstalling dpvo-0.0.0:
+      Successfully uninstalled dpvo-0.0.0
+Successfully installed dpvo-0.0.0

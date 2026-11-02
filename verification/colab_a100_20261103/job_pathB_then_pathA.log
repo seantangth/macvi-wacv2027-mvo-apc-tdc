@@ -1,0 +1,175 @@
+COMMIT 32120005016c01207a725121dbf89f5d0e5726ac
+== machine
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.82.07
+Ubuntu 24.04.4 LTS
+cpus 12, mem 83 GB
+Python 3.13.16
+overlay         236G  281M  236G   1% /
+== PATH B start 2026-11-02T16:43:52+00:00
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 1329M    0 90112    0     0    99k      0  3:49:02 --:--:--  3:49:02   98k  0 1329M    0 3240k    0     0  1801k      0  0:12:35  0:00:01  0:12:34 1801k  1 1329M    1 23.6M    0     0  8693k      0  0:02:36  0:00:02  0:02:34 8692k  3 1329M    3 42.7M    0     0  11.2M      0  0:01:57  0:00:03  0:01:54 11.2M  4 1329M    4 63.4M    0     0  13.2M      0  0:01:40  0:00:04  0:01:36 13.2M  6 1329M    6 84.1M    0     0  14.4M      0  0:01:31  0:00:05  0:01:26 17.0M  7 1329M    7  105M    0     0  15.4M      0  0:01:26  0:00:06  0:01:20 20.2M  9 1329M    9  125M    0     0  16.0M      0  0:01:22  0:00:07  0:01:15 20.2M 11 1329M   11  146M    0     0  16.5M      0  0:01:20  0:00:08  0:01:12 20.5M 12 1329M   12  167M    0     0  16.9M      0  0:01:18  0:00:09  0:01:09 20.5M 14 1329M   14  187M    0     0  17.2M      0  0:01:16  0:00:10  0:01:06 20.5M 15 1329M   15  208M    0     0  17.5M      0  0:01:15  0:00:11  0:01:04 20.4M 17 1329M   17  228M    0     0  17.8M      0  0:01:14  0:00:12  0:01:02 20.7M 18 1329M   18  248M    0     0  18.0M      0  0:01:13  0:00:13  0:01:00 20.6M 20 1329M   20  268M    0     0  18.1M      0  0:01:13  0:00:14  0:00:59 20.5M 21 1329M   21  288M    0     0  18.2M      0  0:01:12  0:00:15  0:00:57 20.4M 23 1329M   23  308M    0     0  18.3M      0  0:01:12  0:00:16  0:00:56 20.3M 24 1329M   24  329M    0     0  18.4M      0  0:01:11  0:00:17  0:00:54 20.0M 26 1329M   26  350M    0     0  18.5M      0  0:01:11  0:00:18  0:00:53 20.0M 27 1329M   27  370M    0     0  18.6M      0  0:01:11  0:00:19  0:00:52 20.1M 29 1329M   29  391M    0     0  18.7M      0  0:01:10  0:00:20  0:00:50 20.1M 31 1329M   31  412M    0     0  18.8M      0  0:01:10  0:00:21  0:00:49 20.3M 32 1329M   32  432M    0     0  18.9M      0  0:01:10  0:00:22  0:00:48 20.7M 34 1329M   34  452M    0     0  19.0M      0  0:01:09  0:00:23  0:00:46 20.6M 35 1329M   35  472M    0     0  19.0M      0  0:01:09  0:00:24  0:00:45 20.6M 37 1329M   37  492M    0     0  19.1M      0  0:01:09  0:00:25  0:00:44 20.6M 38 1329M   38  513M    0     0  19.1M      0  0:01:09  0:00:26  0:00:43 20.6M 40 1329M   40  533M    0     0  19.1M      0  0:01:09  0:00:27  0:00:42 20.2M 41 1329M   41  553M    0     0  19.2M      0  0:01:09  0:00:28  0:00:41 20.2M 43 1329M   43  574M    0     0  19.2M      0  0:01:08  0:00:29  0:00:39 20.3M 44 1329M   44  595M    0     0  19.3M      0  0:01:08  0:00:30  0:00:38 20.3M 46 1329M   46  615M    0     0  19.3M      0  0:01:08  0:00:31  0:00:37 20.4M 47 1329M   47  636M    0     0  19.3M      0  0:01:08  0:00:32  0:00:36 20.4M 49 1329M   49  657M    0     0  19.4M      0  0:01:08  0:00:33  0:00:35 20.5M 51 1329M   51  678M    0     0  19.4M      0  0:01:08  0:00:34  0:00:34 20.5M 52 1329M   52  698M    0     0  19.4M      0  0:01:08  0:00:35  0:00:33 20.5M 54 1329M   54  719M    0     0  19.5M      0  0:01:08  0:00:36  0:00:32 20.5M 55 1329M   55  740M    0     0  19.5M      0  0:01:08  0:00:37  0:00:31 20.5M 57 1329M   57  760M    0     0  19.5M      0  0:01:07  0:00:38  0:00:29 20.5M 58 1329M   58  781M    0     0  19.5M      0  0:01:07  0:00:39  0:00:28 20.5M 60 1329M   60  802M    0     0  19.6M      0  0:01:07  0:00:40  0:00:27 20.5M 61 1329M   61  823M    0     0  19.6M      0  0:01:07  0:00:41  0:00:26 20.6M 63 1329M   63  843M    0     0  19.7M      0  0:01:07  0:00:42  0:00:25 21.0M 64 1329M   64  863M    0     0  19.7M      0  0:01:07  0:00:43  0:00:24 20.8M 66 1329M   66  883M    0     0  19.7M      0  0:01:07  0:00:44  0:00:23 20.7M 67 1329M   67  903M    0     0  19.7M      0  0:01:07  0:00:45  0:00:22 20.6M 69 1329M   69  923M    0     0  19.7M      0  0:01:07  0:00:46  0:00:21 20.5M 71 1329M   71  944M    0     0  19.7M      0  0:01:07  0:00:47  0:00:20 20.0M 72 1329M   72  964M    0     0  19.7M      0  0:01:07  0:00:48  0:00:19 20.2M 74 1329M   74  985M    0     0  19.7M      0  0:01:07  0:00:49  0:00:18 20.3M 75 1329M   75 1006M    0     0  19.7M      0  0:01:07  0:00:50  0:00:17 20.4M 77 1329M   77 1027M    0     0  19.8M      0  0:01:07  0:00:51  0:00:16 20.5M 78 1329M   78 1047M    0     0  19.8M      0  0:01:07  0:00:52  0:00:15 20.5M 80 1329M   80 1068M    0     0  19.8M      0  0:01:07  0:00:53  0:00:14 20.5M 81 1329M   81 1089M    0     0  19.8M      0  0:01:06  0:00:54  0:00:12 20.4M 83 1329M   83 1109M    0     0  19.8M      0  0:01:06  0:00:55  0:00:11 20.4M 85 1329M   85 1130M    0     0  19.8M      0  0:01:06  0:00:56  0:00:10 20.4M 86 1329M   86 1151M    0     0  19.9M      0  0:01:06  0:00:57  0:00:09 20.8M 88 1329M   88 1171M    0     0  19.9M      0  0:01:06  0:00:58  0:00:08 20.7M 89 1329M   89 1191M    0     0  19.9M      0  0:01:06  0:00:59  0:00:07 20.7M 91 1329M   91 1211M    0     0  19.9M      0  0:01:06  0:01:00  0:00:06 20.6M 92 1329M   92 1230M    0     0  19.9M      0  0:01:06  0:01:01  0:00:05 20.4M 94 1329M   94 1251M    0     0  19.9M      0  0:01:06  0:01:02  0:00:04 20.0M 95 1329M   95 1272M    0     0  19.9M      0  0:01:06  0:01:03  0:00:03 20.1M 97 1329M   97 1292M    0     0  19.9M      0  0:01:06  0:01:04  0:00:02 20.1M 98 1329M   98 1313M    0     0  19.9M      0  0:01:06  0:01:05  0:00:01 20.2M100 1329M  100 1329M    0     0  19.9M      0  0:01:06  0:01:06 --:--:-- 20.6M
+lookout-vo-test-v0.1.tar: OK
+20
+== [env] 2026-11-02T16:45:04+00:00
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Downloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)
+ Downloaded cpython-3.10.22-linux-x86_64-gnu (download)
+Using CPython 3.10.22
+Creating virtual environment at: .venvV
+Activate with: source .venvV/bin/activate
+torch 2.5.1+cu121 12.1 NVIDIA A100-SXM4-40GB
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Downloading: "https://download.pytorch.org/models/raft_large_C_T_SKHT_V2-ff5fadd5.pth" to /root/.cache/torch/hub/checkpoints/raft_large_C_T_SKHT_V2-ff5fadd5.pth
+VGGT-1B OK 1256 M params
+RAFT-large OK 5 M params
+# sha256 of the external checkpoints used by this run (2026-11-02T16:46:23+00:00)
+f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e  VGGT-1B model.safetensors (Hub revision 860abec7937da0a4c03c41d3c269c366e82abdf9)
+ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322  torchvision raft_large_C_T_SKHT_V2-ff5fadd5.pth
+== [data] 2026-11-02T16:46:38+00:00
+lookout-vo-test-v0.1.tar: OK
+20
+== [vggt windows] 2026-11-02T16:46:42+00:00
+clip_093: ok
+clip_094: ok
+clip_095: ok
+clip_096: ok
+clip_098: ok
+clip_099: ok
+clip_104: ok
+clip_107: ok
+clip_108: ok
+clip_109: ok
+clip_111: ok
+clip_100: ok
+clip_092: ok
+clip_097: ok
+clip_101: ok
+clip_103: ok
+clip_105: ok
+clip_106: ok
+clip_110: ok
+clip_112: ok
+== [focal probe] 2026-11-02T18:07:57+00:00
+clip_093 flir-VIS ratio=0.99 [422, 445, 411, 353, 353]
+clip_094 flir-VIS ratio=0.99 [411, 411, 404, 418, 437]
+clip_095 flir-VIS ratio=1.07 [461, 445, 483, 437, 437]
+clip_096 flir-VIS ratio=0.83 [310, 339, 345, 368, 368]
+clip_098 flir-VIS ratio=1.70 [532, 429, 1176, 1053, 710]
+clip_099 flir-VIS ratio=1.01 [433, 457, 422, 411, 400]
+clip_104 flir-VIS ratio=1.02 [422, 437, 425, 429, 377]
+clip_107 flir-VIS ratio=1.20 [502, 425, 524, 433, 504]
+clip_108 flir-VIS ratio=0.80 [334, 326, 331, 347, 339]
+clip_109 flir-VIS ratio=0.89 [359, 353, 377, 371, 425]
+clip_111 flir-VIS ratio=0.99 [377, 411, 404, 411, 429]
+PROBE DONE
+== [raft flow] 2026-11-02T18:08:37+00:00
+wrote /content/repo/work/flow/clip_093.npz pairs=2998 secs=81 median|f| bottom-third=11.7 px/s
+wrote /content/repo/work/flow/clip_094.npz pairs=2998 secs=80 median|f| bottom-third=5.1 px/s
+wrote /content/repo/work/flow/clip_099.npz pairs=2997 secs=81 median|f| bottom-third=12.4 px/s
+wrote /content/repo/work/flow/clip_107.npz pairs=2992 secs=86 median|f| bottom-third=12.6 px/s
+wrote /content/repo/work/flow/clip_111.npz pairs=2998 secs=80 median|f| bottom-third=8.8 px/s
+wrote /content/repo/work/flow/clip_092.npz pairs=2996 secs=83 median|f| bottom-third=11.8 px/s
+wrote /content/repo/work/flow/clip_097.npz pairs=2226 secs=58 median|f| bottom-third=30.8 px/s
+wrote /content/repo/work/flow/clip_101.npz pairs=2996 secs=87 median|f| bottom-third=48.5 px/s
+wrote /content/repo/work/flow/clip_103.npz pairs=2997 secs=87 median|f| bottom-third=23.0 px/s
+wrote /content/repo/work/flow/clip_105.npz pairs=2993 secs=82 median|f| bottom-third=20.0 px/s
+wrote /content/repo/work/flow/clip_106.npz pairs=2996 secs=86 median|f| bottom-third=32.9 px/s
+wrote /content/repo/work/flow/clip_110.npz pairs=2986 secs=84 median|f| bottom-third=76.1 px/s
+× Failed to build installable wheels for some pyproject.toml based projects
+╰─> dpvo
+== [dpvo clip_112] 2026-11-02T18:32:00+00:00
+Full traceback: /content/repo/work/dpvo112/logs/clip_112.log
+[1/1] clip_112: tracking_failed (0.0s)
+INFERENCE_COMPLETE: 1 attempted, 0 predicted
+WARNING: no DPVO re-run output -> clip_112 uses the cached DPVO output
+rot: 20 clips
+rotw: 20 clips
+essw: 20 clips
+kd0w: 20 clips
+sel: 20 clips
+ensemble runs 12
+vis5: 5 clips, wide_ens: 12 clips
+rotw: 20 clips
+sel: 20 clips
+fused_g: 20 clips
+vggt_g: 20 clips
+f73w: 8 clips
+ALL_ELIGIBLE
+Format checked. The server separately checks scoreability and >=95% supported coverage on every clip.
+sha256 8a3bba5f79ab9150882dee2034250a06af45b6a2007c3a583bd897546b71da1a
+reproduced sha256 8a3bba5f79ab9150882dee2034250a06af45b6a2007c3a583bd897546b71da1a
+expected   sha256 76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e
+byte-identical: False
+  clip_092: drift of reproduction vs original = 0.0497 %
+  clip_093: drift of reproduction vs original = 3.4433 %
+  clip_094: drift of reproduction vs original = 1.4088 %
+  clip_095: drift of reproduction vs original = 1.6223 %
+  clip_096: drift of reproduction vs original = 0.0000 %
+  clip_097: drift of reproduction vs original = 0.1080 %
+  clip_098: drift of reproduction vs original = 2.3480 %
+  clip_099: drift of reproduction vs original = 1.4208 %
+  clip_100: drift of reproduction vs original = 0.0394 %
+  clip_101: drift of reproduction vs original = 0.0467 %
+  clip_103: drift of reproduction vs original = 0.0114 %
+  clip_104: drift of reproduction vs original = 0.8996 %
+  clip_105: drift of reproduction vs original = 0.0380 %
+  clip_106: drift of reproduction vs original = 0.0791 %
+  clip_107: drift of reproduction vs original = 3.0138 %
+  clip_108: drift of reproduction vs original = 1.5235 %
+  clip_109: drift of reproduction vs original = 2.7912 %
+  clip_110: drift of reproduction vs original = 0.9551 %
+  clip_111: drift of reproduction vs original = 0.2428 %
+  clip_112: drift of reproduction vs original = 0.0135 %
+mean deviation over 20 clips = 1.0028 %   max = 3.4433 %
+== PATH B rc=0 seconds=7830
+== VGGT windows (chained yaw, re-run vs cache)
+  mean over 20 clips: 0.0000 deg/s; worst cumulative 0.000 deg
+== focal probe (ratio re-run vs cache)
+  max |d ratio| 0.1126, mean 0.0190
+== RAFT band statistics (re-run vs cache)
+== DPVO clip_112 (re-run scored against the cached trajectory, official drift %)
+  drift of re-run vs cache: nan %  (poses 2490 / 2490 )
+== PATH A (cached GPU outputs; CPU stages on this Linux machine) 2026-11-02T18:54:25+00:00
+test package already extracted (20 videos)
+rot: 20 clips
+rotw: 20 clips
+essw: 20 clips
+kd0w: 20 clips
+sel: 20 clips
+ensemble runs 12
+vis5: 5 clips, wide_ens: 12 clips
+rotw: 20 clips
+sel: 20 clips
+fused_g: 20 clips
+vggt_g: 20 clips
+f73w: 8 clips
+ALL_ELIGIBLE
+Format checked. The server separately checks scoreability and >=95% supported coverage on every clip.
+sha256 7cf95be2671f5bad9553cfa3609a3da32d59d88392545a1a84f3819376ad007f
+reproduced sha256 7cf95be2671f5bad9553cfa3609a3da32d59d88392545a1a84f3819376ad007f
+expected   sha256 76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e
+byte-identical: False
+  clip_092: drift of reproduction vs original = 0.0497 %
+  clip_093: drift of reproduction vs original = 3.4433 %
+  clip_094: drift of reproduction vs original = 1.4088 %
+  clip_095: drift of reproduction vs original = 1.6223 %
+  clip_096: drift of reproduction vs original = 0.0000 %
+  clip_097: drift of reproduction vs original = 0.1080 %
+  clip_098: drift of reproduction vs original = 2.3480 %
+  clip_099: drift of reproduction vs original = 1.4208 %
+  clip_100: drift of reproduction vs original = 0.0394 %
+  clip_101: drift of reproduction vs original = 0.0467 %
+  clip_103: drift of reproduction vs original = 0.0114 %
+  clip_104: drift of reproduction vs original = 0.0000 %
+  clip_105: drift of reproduction vs original = 0.0380 %
+  clip_106: drift of reproduction vs original = 0.0791 %
+  clip_107: drift of reproduction vs original = 2.7283 %
+  clip_108: drift of reproduction vs original = 1.5235 %
+  clip_109: drift of reproduction vs original = 1.2755 %
+  clip_110: drift of reproduction vs original = 0.9551 %
+  clip_111: drift of reproduction vs original = 0.0003 %
+  clip_112: drift of reproduction vs original = 0.0135 %
+mean deviation over 20 clips = 0.8556 %   max = 3.4433 %
+== PATH A rc=0 seconds=1368
+== ALL DONE 2026-11-02T19:17:13+00:00

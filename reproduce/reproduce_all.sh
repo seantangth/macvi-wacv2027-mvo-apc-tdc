@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Reproduce the JSON bundle of the final entry (leaderboard submission #19363, drift 12.57 %).
-#   bash reproduce/reproduce_all.sh A0   final assembly only, from cached intermediates (no video, no GPU, ~1 min)       -> byte-identical expected
-#   bash reproduce/reproduce_all.sh A    CPU stages from the released test videos (tracker, speed models, headings, policy) + cached GPU-stage outputs (~15 min CPU)
+#   bash reproduce/reproduce_all.sh A0   final assembly only, from cached intermediates (no video, no GPU, ~1 min)       -> exact bundle (byte-identical on macOS arm64)
+#   bash reproduce/reproduce_all.sh A    CPU stages from the released test videos (tracker, speed models, headings, policy) + cached GPU-stage outputs (~10 min on an Apple M4, ~23 min on 12 Colab vCPUs)
 #   bash reproduce/reproduce_all.sh B    everything from the released test videos, GPU stages re-run on one GPU (reproduce/gpu_box.sh)
 # Output: $WORK/final/final_bundle.json, compared with expected/ at the end (compare_bundles.py).
 set -euo pipefail

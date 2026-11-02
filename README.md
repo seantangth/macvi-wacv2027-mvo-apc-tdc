@@ -9,7 +9,7 @@ from the released test frames. Method summary: [`METHOD.md`](METHOD.md). Factshe
 | final entry | submission #19363, Eligible, 20/20 clips scored, coverage 100 % |
 | SHA-256 of the bundle | `76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e` (copy in `expected/`) |
 | code | https://github.com/seantangth/macvi-wacv2027-mvo-apc-tdc (public, MIT) — commit recorded in the factsheet |
-| weights / cache mirror | https://huggingface.co/seantangth/macvi-wacv2027-mvo-apc-tdc (`weights/` and `cache/`, identical SHA-256) |
+| weights / cache | committed in this repository: `weights/` (our speed models, 1.8 MB), `artifacts/masks_v4/`, `cache/` (verified intermediates, 51 MB). The external checkpoints (VGGT-1B, RAFT-large, DPVO) are downloaded from their official sources and checked by SHA-256 (§3) |
 
 The method is **not** a new network. It is a composition of pretrained models and classical estimators that recovers, for every clip, a *heading* ψ(t) and a *relative speed* s(t) and integrates them
 on the water plane, x(t+Δt) = x(t) + s·Δt·[cos ψ, sin ψ]. The leaderboard metric aligns every clip with one global Sim(3) transform, so absolute scale does not matter: only the heading and the
@@ -25,9 +25,9 @@ bash reproduce/reproduce_all.sh A0     # or A, or B
 
 | path | what runs | hardware / time | result |
 |---|---|---|---|
-| **A0** | final assembly (policy → splice → official packer) from the *cached* intermediates in `cache/stage60` (+ download of the 1.3 GB test package for the manifest and timestamps) | CPU, ~1 min | **byte-identical** bundle |
-| **A** | every CPU stage from the test **videos** (tracker, speed models, headings, policy, pack); the four GPU-stage outputs come from `cache/gpu` | CPU, ~10 min on a 10-core laptop (Apple M4; measured 9.6 min from a clean clone) | **byte-identical** bundle |
-| **B** | everything from the test videos, GPU stages (VGGT windows, focal probe, RAFT flow, DPVO) re-run on one GPU by `reproduce/gpu_box.sh` | 1 GPU (A100-40GB), see §5 | near-identical; deviation printed by `reproduce/compare_bundles.py` |
+| **A0** | final assembly (policy → splice → official packer) from the *cached* intermediates in `cache/stage60` (+ download of the 1.3 GB test package for the manifest and timestamps) | CPU, ~1 min (16 s on a Colab VM) | **byte-identical** on macOS arm64; on Linux x86 deviation 0.0000 % (largest coordinate difference 8.5·10⁻¹⁴ m, the JSON text differs in the last float digits) |
+| **A** | every CPU stage from the test **videos** (tracker, speed models, headings, policy, pack); the four GPU-stage outputs come from `cache/gpu` | CPU, ~10 min on a 10-core laptop (Apple M4; measured 9.6 min from a clean clone), 23 min on a 12-vCPU Colab VM | **byte-identical** on macOS arm64; on Linux x86 mean deviation 0.86 % (max 3.44 %): the OpenCV horizon detector is not bit-reproducible across CPU architectures, see §5 |
+| **B** | everything from the test videos, GPU stages (VGGT windows, focal probe, RAFT flow, DPVO) re-run on one GPU by `reproduce/gpu_box.sh` | 1 GPU (A100-40GB): 2 h 10 min on a Colab VM including the environment build | not byte-identical; mean deviation 1.0–1.1 % (max 3.44 %), see §5; printed by `reproduce/compare_bundles.py` |
 
 Each path ends with `reproduce/compare_bundles.py`: SHA-256 of the reproduced bundle next to the expected one and, per clip, the official drift metric of the reproduction scored against the
 original trajectory (0 % = identical). The output is `work/final/final_bundle.json`.
@@ -43,7 +43,7 @@ video + timestamps + nominal calibration
           ↓ [50] heading fusion per camera group      ↓ [60] policy_v004: heading + speed → trajectory → bundle
 ```
 
-| stage | script | needs | output | hardware | deterministic |
+| stage | script | needs | output | hardware | deterministic (macOS arm64; other platforms: §5) |
 |---|---|---|---|---|---|
 | 00 masks (optional) | `reproduce/00_masks.sh` | videos | static-structure masks (`artifacts/masks_v4`, shipped) | CPU | yes (byte-identical PNGs) |
 | 10 VGGT windows | `reproduce/gpu_box.sh vggt` | videos | `work/vggt/windows/*.npz` | GPU | no (bf16) |
@@ -55,9 +55,9 @@ video + timestamps + nominal calibration
 | 50 headings | `reproduce/50_headings.sh` | 10, 11, 20 | `work/hyaw/{rotw,f73w,fused_g,vggt_g}` | CPU | **yes** |
 | 60 assemble + pack | `reproduce/60_assemble_pack.sh` | 31, 40, 50 | `work/final/final_bundle.json` | CPU | **yes** |
 
-Every "yes" was verified by re-running the stage on the development machine and comparing the outputs **byte for byte** with the files that produced the submitted bundle (`reproduce/verify_dirs.py`):
+Every "yes" was verified by re-running the stage on the development machine (macOS 15, Apple M4) and comparing the outputs **byte for byte** with the files that produced the submitted bundle (`reproduce/verify_dirs.py`):
 20/20 masks, 20/20 track tables, all 100 solve outputs, 20/20 `fused_g`, 20/20 `vggt_g`, 8/8 `f73w`, 17/17 RAFT proxies, 17/17 ridge predictions, 112/112 CNN profiles (retrained with the same seeds),
-and the final bundle. Path A was additionally run end to end from a clean copy of this repository: byte-identical, 0.0000 % deviation on all 20 clips.
+and the final bundle. Path A was additionally run end to end from a clean copy of this repository on that machine: byte-identical, 0.0000 % deviation on all 20 clips.
 
 ### What the policy does per camera group (all values fixed, identical for every clip of the group)
 
@@ -90,13 +90,31 @@ all 112 speed profiles byte-identically). `weights/external_weights.yaml` lists 
 `0.809` = median Theil–Sen slope of GPS course increments vs VGGT yaw increments over the 15 qualifying training wide clips (`3_src/mvo_tools/fit_yaw_gain.py`); `0.87` = typical focal-probe ratio of the 8 training flir-VIS clips
 (leave-one-out validated on those clips).
 
-## 5. Determinism and expected deviation
+## 5. Determinism, expected deviation and what was verified where
 
-* Stages 20, 31, 50, 60 are deterministic on CPU (the tracker's RANSAC stream depends on the shard layout, which is therefore part of `20_tracker.sh`). Verified on macOS arm64 / Python 3.12 / NumPy 1.26.4 / OpenCV 4.10 / PyTorch 2.14.1.
-  Other CPUs or library versions can change the last digits of the JSON; `compare_bundles.py` quantifies that.
-* Stages 10/11/30/40 use GPU kernels (bf16 autocast in VGGT, atomics in DPVO): not byte-identical between runs or GPU models. `cache/gpu` contains the outputs that produced the submitted bundle.
-* DPVO (clip_112 only) is documented non-deterministic by the organisers; if a re-run fails the sanity gate, clip_112 falls back to constant speed.
-* **GPU re-run (path B) result: TBD** (filled in by the verification run).
+Deviation = official drift metric of the reproduced trajectory scored against the submitted trajectory of the same clip (`reproduce/compare_bundles.py`; 0 % = identical, mean over the 20 clips).
+
+| run | machine | against the submitted bundle (#19363) |
+|---|---|---|
+| A0 | macOS 15, Apple M4 (development machine) | byte-identical |
+| A0 | Linux x86_64, Colab VM (Ubuntu 24.04, 16 s) | 0.0000 % on all 20 clips; largest coordinate difference 8.5·10⁻¹⁴ m (the JSON text differs in the last float digits) |
+| A | macOS 15, Apple M4, clean clone, 9.6 min | byte-identical, 0.0000 % |
+| A | Linux x86_64, Colab VM (12 vCPU, 23 min) | mean **0.86 %**, max 3.44 % (clip_093) |
+| B | Colab VM, A100-SXM4-40GB, 2 h 10 min, commit `3212000`; DPVO build failed there (CUDA 13 toolkit), cached DPVO output used | mean **1.00 %**, max 3.44 % |
+| B + DPVO | same VM, clip_112 re-run with the final `gpu_box.sh` (commit `7c5a82f`, 3 min) and the bundle re-assembled | mean **1.09 %**, max 3.44 % (clip_112 1.84 %) |
+
+The leaderboard score of a reproduction cannot be computed locally (the test ground truth is not public). A mean trajectory deviation of ~1 % means that a reproduced bundle is expected to score within about one percentage point of 12.57 %; **path A0 gives the exact bundle** from the intermediates that produced it.
+
+Where the deviations come from (Colab run; `reproduce/compare_intermediates.py` and file-by-file comparisons; logs and a summary in [`verification/colab_a100_20261103/`](verification/colab_a100_20261103/SUMMARY.md)):
+
+1. **VGGT windows and RAFT band statistics reproduce exactly**: 20/20 and 12/12 clips, mean |Δ yaw increment| 0.0000 °/s, mean |Δ flow| 0.0000 px/s. Same GPU model (A100-40GB) and PyTorch 2.5.1+cu121 as the original run; other GPU models or library versions may differ (bf16 autocast).
+2. **Focal probe**: the ratio differs on 5 of the 11 flir-VIS clips (104, 107, 108, 109, 111; max |Δ| 0.113, mean 0.019) → different yaw gains → headings of clips 104, 107, 109, 111 deviate by 0.2–1.0 % (109: 1.3 %).
+3. **Horizon tracker (OpenCV) is not bit-reproducible across CPU architectures.** On Linux x86 the horizon detector (Canny + probabilistic Hough on frames decoded by OpenCV's bundled FFmpeg) returns a different line than on macOS arm64 in a minority of frames, even with the identical `opencv-python-headless` 4.10.0 build (tested in a clean venv; the Colab GPU environment actually loads OpenCV 4.11.0 because VGGT pulls in `opencv-python`, with the same outcome). The tracked features and window-wise rotations then differ: tracker headings deviate by 0.8 % on average (max 4.0 %), the final bundle by 0.86 % (path A). The macOS outputs are the ones that produced the submitted bundle and are shipped in `cache/stage60` (path A0).
+4. **DPVO** (clip_112 only) is documented as non-deterministic by the organisers: the re-run differs from the cached trajectory by 1.56 %, which moves clip_112 from 0.01 % to 1.84 %.
+5. The speed models (RAFT rule, ridge, gated CNN) recomputed on Linux differ by ≤ 0.03 %.
+
+Notes for other machines: the DPVO CUDA extensions must be built with an `nvcc` of the same major version as the PyTorch wheels (12.x); `gpu_box.sh` looks for `/usr/local/cuda-12*` and otherwise installs the CUDA 12.6 toolkit pieces from the NVIDIA apt repository (needs root or sudo; Colab ships CUDA 13). It also sets `MPLBACKEND=Agg` (DPVO imports pyplot; Jupyter/Colab shells export an inline backend). If DPVO cannot be built or run, path B warns and uses the cached DPVO output for clip_112.
+Stage times on the Colab VM: test package download + environment 3 min, VGGT windows 81 min, focal probe 1 min, RAFT flow 23 min, DPVO inference 3 min (build ≈ 12 min, overlapped with the VGGT stage), CPU stages (tracker, speed models, headings, pack) 22 min.
 
 ## 6. Layout
 

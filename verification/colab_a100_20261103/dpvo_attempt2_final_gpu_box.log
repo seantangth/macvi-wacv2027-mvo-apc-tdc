@@ -1,0 +1,14 @@
+COMMIT 7c5a82f  status: 1 changed files
+== dpvo_env 2026-11-02T18:53:19+00:00
+== [dpvo env] 2026-11-02T18:53:19+00:00
+DPVO build with CUDA 12.6 in /usr/local/cuda-12
+DPVO/dpvo.pth: OK
+dpvo_env rc=0
+== dpvo infer 2026-11-02T18:53:37+00:00
+== [dpvo clip_112] 2026-11-02T18:53:37+00:00
+  with autocast(enabled=True):
+[1/1] clip_112: predicted (178.9s)
+INFERENCE_COMPLETE: 1 attempted, 1 predicted
+total 292
+-rw-r--r-- 1 root root 294942 Nov  2 18:56 clip_112.json
+DPVOFIX2 DONE 2026-11-02T18:56:39+00:00

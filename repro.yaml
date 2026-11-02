@@ -7,7 +7,14 @@ bundle: expected/MVO_sub_v028_ensspeedwide-k07-vis5-k10_20261028.json
 bundle_sha256: 76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e
 contact: seantangth@gmail.com       # an address checked during the evaluation period
 hardware: NVIDIA A100-SXM4-40GB (GPU stages), Apple M4 CPU (CPU stages)
+verified:                           # see README section 5
+  A0_macos_arm64: byte-identical
+  A0_linux_x86_colab: deviation 0.0000 %, max coordinate difference 8.5e-14 m
+  A_macos_arm64: byte-identical
+  A_linux_x86_colab: mean deviation 0.86 %, max 3.44 %
+  B_colab_a100_40gb: mean deviation 1.00 %, max 3.44 %   # cached DPVO output
+  B_plus_dpvo_rerun: mean deviation 1.09 %, max 3.44 %
 commands:
-  fast_check:  bash reproduce/reproduce_all.sh A0     # CPU, ~1 min, byte-identical from cached intermediates
-  cpu_stages:  bash reproduce/reproduce_all.sh A      # CPU, ~10 min from the test videos, cached GPU-stage outputs
-  full:        bash reproduce/reproduce_all.sh B      # one GPU, everything from the test videos
+  fast_check:  bash reproduce/reproduce_all.sh A0     # CPU, ~1 min, exact bundle from the cached intermediates
+  cpu_stages:  bash reproduce/reproduce_all.sh A      # CPU, 10-23 min from the test videos, cached GPU-stage outputs (byte-identical on macOS arm64, 0.86 % mean deviation on Linux x86)
+  full:        bash reproduce/reproduce_all.sh B      # one GPU, everything from the test videos (2 h 10 min on an A100-40GB, 1.0-1.1 % mean deviation)

@@ -1,0 +1,21 @@
+== [dpvo env] 2026-11-02T16:46:42+00:00
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Using CPython 3.10.22
+Creating virtual environment with seed packages at: .venvD
+ + packaging==26.3
+ + pip==26.2.2
+ + setuptools==84.2.1
+ + wheel==0.48.0
+Activate with: source .venvD/bin/activate
+  error: subprocess-exited-with-error
+  
+  × Building wheel for dpvo (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> No available output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for dpvo
+error: failed-wheel-build-for-install
+
+× Failed to build installable wheels for some pyproject.toml based projects
+╰─> dpvo

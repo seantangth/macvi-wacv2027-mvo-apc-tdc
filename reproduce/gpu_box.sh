@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GPU stages of the reproduction (one NVIDIA GPU, CUDA 12.x driver, Ubuntu 22.04; developed on A100-40GB, verified on H100-80GB).
+# GPU stages of the reproduction (one NVIDIA GPU, CUDA 12.x/13 driver, Ubuntu 22.04/24.04; developed on an A100-40GB, re-run end to end on an A100-40GB Colab VM, 2 h 10 min).
 # Run from the repository root:   bash reproduce/gpu_box.sh all         (or one of: env data vggt probe flow dpvo)
 #   env   : python venv .venvV (torch 2.5.1+cu121, VGGT) and .venvD (DPVO 859bbbf + checkpoint)
 #   data  : released test package (macvi.org) -> data/lookout-vo-test-v0.1  (SHA-256 checked)

@@ -1,0 +1,14 @@
+COMMIT c86a5a6
+== B2 assemble 2026-11-02T18:58:02+00:00
+ALL_ELIGIBLE
+Format checked. The server separately checks scoreability and >=95% supported coverage on every clip.
+sha256 354c3835d0a9906772809618ca85dab47023e2197c6edded57e5feac6b491636
+== B2 compare 2026-11-02T18:58:18+00:00
+Traceback (most recent call last):
+  File "/content/repo/reproduce/compare_bundles.py", line 9, in <module>
+    import metrics  # starter metrics.py (PYTHONPATH set by reproduce/common.sh)
+ModuleNotFoundError: No module named 'metrics'
+== B2 DPVO intermediate compare 2026-11-02T18:58:18+00:00
+== DPVO clip_112 (re-run scored against the cached trajectory, official drift %)
+  drift of re-run vs cache: 1.555 %  (poses 2490 / 2490 )
+B2 DONE 2026-11-02T18:58:19+00:00

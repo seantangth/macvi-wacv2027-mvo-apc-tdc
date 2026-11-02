@@ -23,6 +23,6 @@ VGGT-1B (`facebook/VGGT-1B`, CC BY-NC 4.0), RAFT-large (torchvision `C_T_SKHT_V2
 **Leaderboard-derived choices.** No numeric setting was tuned on leaderboard scores. Scores decided which components were kept (water-flow speed on wide clips, ensemble speed, harbour k = 1)
 and which of our uploads is the final entry (#19363 rather than #19434). Details in the factsheet, Section 2.
 
-**Determinism.** The CPU stages (tracker, speed models, fusion, policy, packing) are deterministic and were verified byte-identical against the files that produced the submitted bundle.
-The GPU stages (VGGT windows, focal probe, RAFT flow, DPVO) are not byte-reproducible across runs/GPUs; `cache/gpu` holds the outputs that produced the submitted bundle.
+**Determinism.** The CPU stages (tracker, speed models, fusion, policy, packing) are deterministic on the development machine (macOS 15, Apple M4) and were verified byte-identical against the files that produced the submitted bundle; on Linux x86 the OpenCV horizon tracker differs in a minority of frames (mean deviation of the final bundle 0.86 %, README §5).
+The GPU stages (VGGT windows, RAFT flow) reproduced exactly on a second A100-40GB with the same software; the focal probe and DPVO did not (final bundle deviation 1.0–1.1 %, README §5). `cache/gpu` and `cache/stage60` hold the outputs that produced the submitted bundle.
 Training code: `reproduce/train_speed_models.sh`.

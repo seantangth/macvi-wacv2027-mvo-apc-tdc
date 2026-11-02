@@ -1,0 +1,10 @@
+venvT cv2 4.10.0
+== track start 2026-11-02T19:05:20+00:00
+== track end 2026-11-02T19:11:22+00:00
+
+/content/trkT/vis/tracks:
+total 20204
+drwxr-xr-x 2 root root     4096 Nov  2 19:11 .
+drwxr-xr-x 8 root root     4096 Nov  2 19:11 ..
+-rw-r--r-- 1 root root 20677584 Nov  2 19:11 clip_093.npz
+CVTEST DONE

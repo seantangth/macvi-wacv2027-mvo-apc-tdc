@@ -1,0 +1,50 @@
+== VGGT windows (chained yaw, re-run vs cache)
+  clip_092: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_093: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_094: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_095: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_096: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_097: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_098: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_099: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_100: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_101: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_103: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_104: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_105: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_106: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_107: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_108: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_109: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_110: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_111: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  clip_112: mean |d yaw increment| 0.0000 deg/s, max |d cumulative yaw| 0.000 deg, same length True
+  mean over 20 clips: 0.0000 deg/s; worst cumulative 0.000 deg
+== focal probe (ratio re-run vs cache)
+  clip_093: cache 0.9854  re-run 0.9854
+  clip_094: cache 0.9854  re-run 0.9854
+  clip_095: cache 1.0668  re-run 1.0668
+  clip_096: cache 0.8265  re-run 0.8265
+  clip_098: cache 1.7039  re-run 1.7039
+  clip_099: cache 1.0115  re-run 1.0115
+  clip_104: cache 1.0572  re-run 1.0204
+  clip_107: cache 1.1919  re-run 1.2034
+  clip_108: cache 0.8401  re-run 0.8002
+  clip_109: cache 1.0027  re-run 0.8900
+  clip_111: cache 0.9769  re-run 0.9854
+  max |d ratio| 0.1126, mean 0.0190
+== RAFT band statistics (re-run vs cache)
+  clip_092: pairs 2996/2996, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_093: pairs 2998/2998, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_094: pairs 2998/2998, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_097: pairs 2226/2226, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_099: pairs 2997/2997, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_101: pairs 2996/2996, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_103: pairs 2997/2997, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_105: pairs 2993/2993, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_106: pairs 2996/2996, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_107: pairs 2992/2992, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_110: pairs 2986/2986, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+  clip_111: pairs 2998/2998, mean |d vec| 0.0000 px/s, corr(mag) 1.00000
+== DPVO clip_112 (re-run scored against the cached trajectory, official drift %)
+  drift of re-run vs cache: nan %  (poses 2490 / 2490 )

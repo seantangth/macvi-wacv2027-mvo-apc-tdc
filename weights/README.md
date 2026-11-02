@@ -1,6 +1,6 @@
 # weights/
 
-Our own trained components (committed here and mirrored on Hugging Face, identical SHA-256, see `SHA256SUMS`):
+Our own trained components (committed here, SHA-256 in `SHA256SUMS`):
 
 | file | what | trained on |
 |---|---|---|

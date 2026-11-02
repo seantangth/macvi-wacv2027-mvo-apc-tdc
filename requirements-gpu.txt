@@ -1,4 +1,4 @@
-# GPU stages (10, 11, 30): created by reproduce/gpu_box.sh (python 3.10 venv .venvV); versions as used on the development GPU box (Ubuntu 22.04, NVIDIA A100-40GB, CUDA 12.1 wheels).
+# GPU stages (10, 11, 30): created by reproduce/gpu_box.sh (python 3.10 venv .venvV); versions as used on the development GPU box (Ubuntu 22.04, NVIDIA A100-40GB, CUDA 12.1 wheels); re-run on a Colab A100-40GB (Ubuntu 24.04) with the same wheels.
 --index-url https://download.pytorch.org/whl/cu121
 torch==2.5.1
 torchvision==0.20.1
