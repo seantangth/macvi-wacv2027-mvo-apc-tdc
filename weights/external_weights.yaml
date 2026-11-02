@@ -8,7 +8,8 @@ vggt_1b:
 raft_large:
   use: water-band flow statistics (stage 30)
   source: torchvision 0.20.1  Raft_Large_Weights.C_T_SKHT_V2   # downloaded by torchvision into the torch hub cache
-  sha256: TBD   # recorded by the verification run (work/logs/external_weights_sha256.txt)
+  file: raft_large_C_T_SKHT_V2-ff5fadd5.pth
+  sha256: ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322   # recorded by the Colab A100 verification run (work/logs/external_weights_sha256.txt)
   license: BSD-3-Clause
 dpvo:
   use: speed profile of clip_112 only (stage 40)

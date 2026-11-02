@@ -77,7 +77,7 @@ Per-clip fixed decisions (lists of clips; disclosed in the factsheet and visible
 | model | use | source | SHA-256 / version | licence |
 |---|---|---|---|---|
 | VGGT-1B (Wang et al., CVPR 2025) | windowed yaw, focal probe | Hugging Face `facebook/VGGT-1B`, `model.safetensors` | `f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e` | CC BY-NC 4.0 |
-| RAFT-large (Teed & Deng, ECCV 2020) | water-band flow statistics | torchvision 0.20.1 `Raft_Large_Weights.C_T_SKHT_V2` | recorded by the verification run (§5) | BSD-3 |
+| RAFT-large (Teed & Deng, ECCV 2020) | water-band flow statistics | torchvision 0.20.1 `Raft_Large_Weights.C_T_SKHT_V2` (`raft_large_C_T_SKHT_V2-ff5fadd5.pth`) | `ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322` | BSD-3 |
 | DPVO (Teed, Lipson, Deng, NeurIPS 2023) | speed profile of clip_112 only | `princeton-vl/DPVO` @ `859bbbf`, `dpvo.pth` | `30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12` | MIT |
 | ridge model (ours) | wide speed | `weights/ridge_train46.json` | `57e0057e969d36f5f45dcc467359fa67ba1e6b0be709fe8236ee672a6e2243cf` | MIT |
 | gated CNN (ours), seeds 0–4 | wide speed | `weights/cnn_gate/seed*.pt` (377 KB each) | `weights/SHA256SUMS` | MIT |
