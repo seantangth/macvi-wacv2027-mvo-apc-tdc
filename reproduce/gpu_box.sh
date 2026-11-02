@@ -23,7 +23,7 @@ do_env() {
   [ -x "$PYV" ] || uv venv --python 3.10 .venvV >/dev/null || return 1
   uv pip install --python "$PYV" -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121 || return 1
   uv pip install --python "$PYV" -q "numpy<2" opencv-python-headless==4.10.0.84 pillow huggingface_hub einops safetensors tqdm scipy || return 1
-  uv pip install --python "$PYV" -q "git+https://github.com/facebookresearch/vggt.git" || return 1
+  uv pip install --python "$PYV" -q "git+https://github.com/facebookresearch/vggt.git@a288dd0f14786c93483e45524328726ab7b1b4ce" || return 1   # the commit used by the verification run (pip_freeze_venvV.txt)
   "$PYV" - <<'PY' || return 1
 import torch; print('torch', torch.__version__, torch.version.cuda, torch.cuda.get_device_name(0), flush=True)
 from vggt.models.vggt import VGGT; m = VGGT.from_pretrained('facebook/VGGT-1B'); print('VGGT-1B OK', sum(p.numel() for p in m.parameters()) // 1_000_000, 'M params')
@@ -33,7 +33,10 @@ PY
   { echo "# sha256 of the external checkpoints used by this run ($(date -Is))"
     for f in "$HOME"/.cache/huggingface/hub/models--facebook--VGGT-1B/snapshots/*/model.safetensors; do [ -e "$f" ] && echo "$(sha256sum "$(readlink -f "$f")" | cut -c1-64)  VGGT-1B model.safetensors (Hub revision $(basename "$(dirname "$f")"))"; done
     for f in "$HOME"/.cache/torch/hub/checkpoints/raft_large_*.pth; do [ -e "$f" ] && echo "$(sha256sum "$f" | cut -c1-64)  torchvision $(basename "$f")"; done; } > "$WORK/logs/external_weights_sha256.txt" 2>/dev/null
-  cat "$WORK/logs/external_weights_sha256.txt"; return 0
+  cat "$WORK/logs/external_weights_sha256.txt"
+  grep -q "^f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e " "$WORK/logs/external_weights_sha256.txt" || echo "WARNING: the VGGT-1B checkpoint from the Hub differs from the one used for the submitted bundle (expected sha256 f164acf6...467e): the GPU stages may deviate more than documented"
+  grep -q "^ff5fadd56d26b40647388883af1547351ea17868b765c05b27231e72dd16a322 " "$WORK/logs/external_weights_sha256.txt" || echo "WARNING: the RAFT-large checkpoint differs from the one used for the submitted bundle (expected sha256 ff5fadd5...a322)"
+  return 0
 }
 cuda12_home() {   # prints a CUDA_HOME whose nvcc has the same major version as the PyTorch wheels (12); returns 1 if there is none
   local d v
