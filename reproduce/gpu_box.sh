@@ -15,9 +15,10 @@ VIS11="clip_093 clip_094 clip_095 clip_096 clip_098 clip_099 clip_104 clip_107 c
 OTH9="clip_100 clip_092 clip_097 clip_101 clip_103 clip_105 clip_106 clip_110 clip_112"
 FLOW12="clip_093 clip_094 clip_099 clip_107 clip_111 clip_092 clip_097 clip_101 clip_103 clip_105 clip_106 clip_110"
 log() { echo "== $* $(date -Is)"; }
+SUDO=""; [ "$(id -u)" -ne 0 ] && command -v sudo >/dev/null && SUDO=sudo   # Colab runs as root without sudo
 do_env() {
   log "[env]"
-  sudo apt-get update -qq >/dev/null 2>&1; sudo apt-get install -y -qq ffmpeg libgl1 python3.10 python3.10-venv python3.10-dev build-essential unzip git >/dev/null 2>&1 || true
+  $SUDO apt-get update -qq >/dev/null 2>&1; $SUDO apt-get install -y -qq ffmpeg libgl1 build-essential unzip git >/dev/null 2>&1 || true   # Python 3.10 comes from uv (no apt package needed)
   command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null 2>&1; export PATH="$HOME/.local/bin:$PATH"
   [ -x "$PYV" ] || uv venv --python 3.10 .venvV >/dev/null || return 1
   uv pip install --python "$PYV" -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121 || return 1
@@ -28,11 +29,16 @@ import torch; print('torch', torch.__version__, torch.version.cuda, torch.cuda.g
 from vggt.models.vggt import VGGT; m = VGGT.from_pretrained('facebook/VGGT-1B'); print('VGGT-1B OK', sum(p.numel() for p in m.parameters()) // 1_000_000, 'M params')
 from torchvision.models.optical_flow import raft_large, Raft_Large_Weights; r = raft_large(weights=Raft_Large_Weights.C_T_SKHT_V2, progress=False); print('RAFT-large OK', sum(p.numel() for p in r.parameters()) // 1_000_000, 'M params')
 PY
-  uv pip freeze --python "$PYV" > "$WORK/logs/pip_freeze_venvV.txt" 2>/dev/null; return 0
+  uv pip freeze --python "$PYV" > "$WORK/logs/pip_freeze_venvV.txt" 2>/dev/null
+  { echo "# sha256 of the external checkpoints used by this run ($(date -Is))"
+    for f in "$HOME"/.cache/huggingface/hub/models--facebook--VGGT-1B/snapshots/*/model.safetensors; do [ -e "$f" ] && echo "$(sha256sum "$(readlink -f "$f")" | cut -c1-64)  VGGT-1B model.safetensors (Hub revision $(basename "$(dirname "$f")"))"; done
+    for f in "$HOME"/.cache/torch/hub/checkpoints/raft_large_*.pth; do [ -e "$f" ] && echo "$(sha256sum "$f" | cut -c1-64)  torchvision $(basename "$f")"; done; } > "$WORK/logs/external_weights_sha256.txt" 2>/dev/null
+  cat "$WORK/logs/external_weights_sha256.txt"; return 0
 }
 do_dpvo_env() {   # DPVO baseline environment (needs nvcc); mirrors the official QUICKSTART pins
   log "[dpvo env]"
-  [ -x "$PYD" ] || python3.10 -m venv .venvD || return 1
+  command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null 2>&1; export PATH="$HOME/.local/bin:$PATH"
+  [ -x "$PYD" ] || uv venv --python 3.10 --seed .venvD >/dev/null || return 1
   "$PYD" -m pip install -q --upgrade pip wheel setuptools ninja
   "$PYD" -m pip install -q torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121 || return 1
   "$PYD" -m pip install -q torch-scatter -f https://data.pyg.org/whl/torch-2.5.0+cu121.html || "$PYD" -m pip install -q torch-scatter
