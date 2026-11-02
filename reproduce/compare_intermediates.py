@@ -3,7 +3,7 @@
   windows  : per clip, difference of the chained yaw of the VGGT windows (deg): mean |d(yaw increment)| per 1 s and max |d(cumulative yaw)|
   probe    : focal-probe ratio per clip and the resulting gain
   flow     : RAFT band statistics: mean |d| of the flow vectors (px/s) and correlation of the magnitudes
-  dpvo     : clip_112 DPVO trajectory: official drift of the re-run scored against the cached trajectory
+  dpvo     : clip_112 DPVO trajectory: official drift of the re-run scored against the cached trajectory (cached path scaled to 2 km)
 Usage: compare_intermediates.py WORK CACHE_GPU"""
 import json, sys, glob, os
 from pathlib import Path
@@ -44,7 +44,8 @@ def main():
     fa, fb = C / 'dpvo112/predictions/clip_112.json', W / 'dpvo112/predictions/clip_112.json'
     if fb.is_file():
         A, B = json.load(open(fa)), json.load(open(fb))
-        s = metrics.score_trajectory(np.asarray(B['times'], float), np.asarray(B['positions'], float), np.asarray(A['times'], float), np.asarray(A['positions'], float))
+        pa = np.asarray(A['positions'], float); f = 2000.0 / max(np.linalg.norm(np.diff(pa, axis=0), axis=1).sum(), 1e-9)   # DPVO units are arbitrary: scale the cached path to 2 km (both by the same factor) so that the metric's 100-800 m segments exist
+        s = metrics.score_trajectory(np.asarray(B['times'], float), np.asarray(B['positions'], float) * f, np.asarray(A['times'], float), pa * f)
         print('  drift of re-run vs cache:', None if s is None else round(s['drift_pct'], 3), '%  (poses', len(A['times']), '/', len(B['times']), ')')
     else: print('  no DPVO re-run output')
 
