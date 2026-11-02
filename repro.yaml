@@ -1,0 +1,13 @@
+# Reproduction record of the final entry (macvi.org dashboard).
+team: APC_TDC                       # exactly as registered on macvi.org
+track: maritime-visual-odometry
+submission_id: 19363                # final entry; leaderboard drift 12.57 %
+uploaded_by_user_id: 1802
+bundle: expected/MVO_sub_v028_ensspeedwide-k07-vis5-k10_20261028.json
+bundle_sha256: 76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e
+contact: seantangth@gmail.com       # an address checked during the evaluation period
+hardware: NVIDIA A100-SXM4-40GB (GPU stages), Apple M4 CPU (CPU stages)
+commands:
+  fast_check:  bash reproduce/reproduce_all.sh A0     # CPU, ~1 min, byte-identical from cached intermediates
+  cpu_stages:  bash reproduce/reproduce_all.sh A      # CPU, ~10 min from the test videos, cached GPU-stage outputs
+  full:        bash reproduce/reproduce_all.sh B      # one GPU, everything from the test videos

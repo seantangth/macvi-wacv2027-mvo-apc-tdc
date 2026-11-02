@@ -1,0 +1,2 @@
+37ca5c061589eafb9d8026b25ec86640e0a255ef
+37ca5c061589eafb9d8026b25ec86640e0a255ef 2026-10-10 18:54:14 +0200 Use Maritime Visual Odometry in public documentation (#4)

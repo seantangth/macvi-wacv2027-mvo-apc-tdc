@@ -1,0 +1,11 @@
+work/
+__pycache__/
+*.pyc
+.venvV/
+.venvD/
+.venv/
+DPVO/
+1_data/raw/*.tar
+1_data/raw/lookout-vo-test-v0.1/
+1_data/raw/release/
+.DS_Store

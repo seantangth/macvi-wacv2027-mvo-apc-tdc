@@ -1,0 +1,17 @@
+# Public pretrained checkpoints used at inference (not redistributed; downloaded by the GPU stages of reproduce/gpu_box.sh).
+vggt_1b:
+  use: windowed yaw (stage 10) and focal probe (stage 11)
+  source: https://huggingface.co/facebook/VGGT-1B      # loaded with VGGT.from_pretrained('facebook/VGGT-1B')
+  file: model.safetensors
+  sha256: f164acf60724910d8fe1578bb499d800850c7bb0948db7555c413f9fbe60467e   # file hash of the Hub revision 860abec7937da0a4c03c41d3c269c366e82abdf9 (2026-11-03)
+  license: CC BY-NC 4.0 (model card)
+raft_large:
+  use: water-band flow statistics (stage 30)
+  source: torchvision 0.20.1  Raft_Large_Weights.C_T_SKHT_V2   # downloaded by torchvision into the torch hub cache
+  sha256: TBD   # recorded by the verification run (work/logs/external_weights_sha256.txt)
+  license: BSD-3-Clause
+dpvo:
+  use: speed profile of clip_112 only (stage 40)
+  source: https://github.com/princeton-vl/DPVO @ 859bbbfdac6c6185f345003b3c473901fcd13ace ; checkpoint dpvo.pth from the official models.zip (see the DPVO README / the challenge QUICKSTART)
+  sha256: 30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12   # dpvo.pth
+  license: MIT

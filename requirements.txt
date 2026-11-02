@@ -1,0 +1,4 @@
+# CPU stages (00, 20, 31, 50, 60) and the optional training scripts.  Verified byte-identical on macOS 15 / Apple M4 / Python 3.12.15.
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+torch>=2.5          # CPU wheel is enough: gated-CNN inference/training (verified with 2.14.1 on macOS arm64)

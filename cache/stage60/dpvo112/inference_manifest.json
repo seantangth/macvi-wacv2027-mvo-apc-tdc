@@ -1,0 +1,238 @@
+{
+  "dataset_sha256": "a4585f392708a5c2518b699e1b262e7d0034d174de3e19f358904ef8b53ae572",
+  "target_fps": 8.0,
+  "seed": 0,
+  "dpvo_buffer_size": null,
+  "dpvo": {
+    "dir": "/home/ubuntu/mvo/DPVO",
+    "revision": "859bbbfdac6c6185f345003b3c473901fcd13ace",
+    "checkpoint_sha256": "30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12",
+    "buffer_size": 4096,
+    "config": {
+      "BACKEND_THRESH": 64.0,
+      "BUFFER_SIZE": 4096,
+      "CENTROID_SEL_STRAT": "RANDOM",
+      "CLASSIC_LOOP_CLOSURE": false,
+      "GLOBAL_OPT_FREQ": 15,
+      "KEYFRAME_INDEX": 4,
+      "KEYFRAME_THRESH": 15.0,
+      "LOOP_CLOSE_WINDOW_SIZE": 3,
+      "LOOP_CLOSURE": false,
+      "LOOP_RETR_THRESH": 0.04,
+      "MAX_EDGE_AGE": 1000,
+      "MIXED_PRECISION": true,
+      "MOTION_DAMPING": 0.5,
+      "MOTION_MODEL": "DAMPED_LINEAR",
+      "OPTIMIZATION_WINDOW": 10,
+      "PATCHES_PER_FRAME": 96,
+      "PATCH_LIFETIME": 13,
+      "REMOVAL_WINDOW": 22
+    }
+  },
+  "environment": {
+    "python": "3.10.12",
+    "numpy": "1.26.4",
+    "opencv": "4.10.0",
+    "torch": "2.5.1+cu121",
+    "torch_cuda": "12.1",
+    "gpu": "NVIDIA A100-SXM4-40GB"
+  },
+  "clips": [
+    {
+      "key": "clip_092",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2494,
+      "native_fps": 24.97610516929287,
+      "stride": 3,
+      "effective_fps": 8.325368389764291,
+      "elapsed_seconds": 97.099
+    },
+    {
+      "key": "clip_093",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2247,
+      "native_fps": 29.99985650791659,
+      "stride": 4,
+      "effective_fps": 7.4999641269791475,
+      "elapsed_seconds": 84.439
+    },
+    {
+      "key": "clip_094",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2247,
+      "native_fps": 30.00358107257963,
+      "stride": 4,
+      "effective_fps": 7.500895268144908,
+      "elapsed_seconds": 81.64
+    },
+    {
+      "key": "clip_095",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2399,
+      "native_fps": 24.052864172159428,
+      "stride": 3,
+      "effective_fps": 8.017621390719809,
+      "elapsed_seconds": 93.328
+    },
+    {
+      "key": "clip_096",
+      "split": "test",
+      "status": "tracking_failed",
+      "reason": "prediction positions contain non-finite values",
+      "error_log": "logs/clip_096.log",
+      "elapsed_seconds": 102.691
+    },
+    {
+      "key": "clip_097",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2123,
+      "native_fps": 14.257967806408631,
+      "stride": 2,
+      "effective_fps": 7.128983903204316,
+      "elapsed_seconds": 82.594
+    },
+    {
+      "key": "clip_098",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2359,
+      "native_fps": 23.68092909003738,
+      "stride": 3,
+      "effective_fps": 7.89364303001246,
+      "elapsed_seconds": 91.392
+    },
+    {
+      "key": "clip_099",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2247,
+      "native_fps": 30.010331699289132,
+      "stride": 4,
+      "effective_fps": 7.502582924822283,
+      "elapsed_seconds": 85.077
+    },
+    {
+      "key": "clip_100",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2247,
+      "native_fps": 29.970492899593516,
+      "stride": 4,
+      "effective_fps": 7.492623224898379,
+      "elapsed_seconds": 54.061
+    },
+    {
+      "key": "clip_101",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2494,
+      "native_fps": 24.977472215732735,
+      "stride": 3,
+      "effective_fps": 8.325824071910912,
+      "elapsed_seconds": 100.821
+    },
+    {
+      "key": "clip_103",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2399,
+      "native_fps": 24.017918341413363,
+      "stride": 3,
+      "effective_fps": 8.00597278047112,
+      "elapsed_seconds": 89.859
+    },
+    {
+      "key": "clip_104",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2635,
+      "native_fps": 26.448088016667715,
+      "stride": 3,
+      "effective_fps": 8.816029338889239,
+      "elapsed_seconds": 102.31
+    },
+    {
+      "key": "clip_105",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2494,
+      "native_fps": 24.98090716341866,
+      "stride": 3,
+      "effective_fps": 8.326969054472887,
+      "elapsed_seconds": 99.696
+    },
+    {
+      "key": "clip_106",
+      "split": "test",
+      "status": "tracking_failed",
+      "reason": "prediction positions contain non-finite values",
+      "error_log": "logs/clip_106.log",
+      "elapsed_seconds": 95.253
+    },
+    {
+      "key": "clip_107",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2615,
+      "native_fps": 26.232520568756886,
+      "stride": 3,
+      "effective_fps": 8.744173522918961,
+      "elapsed_seconds": 101.453
+    },
+    {
+      "key": "clip_108",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2690,
+      "native_fps": 26.917846545598604,
+      "stride": 3,
+      "effective_fps": 8.972615515199534,
+      "elapsed_seconds": 100.02
+    },
+    {
+      "key": "clip_109",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2127,
+      "native_fps": 28.362259526675626,
+      "stride": 4,
+      "effective_fps": 7.090564881668906,
+      "elapsed_seconds": 79.804
+    },
+    {
+      "key": "clip_110",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2268,
+      "native_fps": 22.692324619605156,
+      "stride": 3,
+      "effective_fps": 7.564108206535052,
+      "elapsed_seconds": 89.738
+    },
+    {
+      "key": "clip_111",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2247,
+      "native_fps": 29.99891550083006,
+      "stride": 4,
+      "effective_fps": 7.499728875207515,
+      "elapsed_seconds": 88.737
+    },
+    {
+      "key": "clip_112",
+      "split": "test",
+      "status": "predicted",
+      "n_poses": 2490,
+      "native_fps": 24.974390384157612,
+      "stride": 3,
+      "effective_fps": 8.324796794719203,
+      "elapsed_seconds": 94.863
+    }
+  ]
+}

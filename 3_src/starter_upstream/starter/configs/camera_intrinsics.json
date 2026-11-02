@@ -1,0 +1,78 @@
+{
+  "$comment": [
+    "Nominal, field-of-view-derived camera geometry for the Maritime Visual Odometry starter.",
+    "These are not measured per-camera calibrations. For released data, the public manifest supplies the per-clip active image and calibration.",
+    "Thermal video may be pillarboxed; focal lengths use the active image dimensions, not the encoded container width."
+  ],
+  "presets": {
+    "wide": {
+      "channel": "visible",
+      "hfov_deg": 55.3,
+      "pillarboxed": false,
+      "active_width_px": 1920,
+      "fx": 1832.4,
+      "fy": 1832.4,
+      "provenance": "nominal-fov-derived",
+      "notes": "Nominal 55.3 degree horizontal field of view at 1920 pixels."
+    },
+    "zoom": {
+      "channel": "visible",
+      "hfov_deg": 28.0,
+      "pillarboxed": false,
+      "active_width_px": 1920,
+      "fx": 3850.3,
+      "fy": 3850.3,
+      "provenance": "nominal-fov-derived",
+      "notes": "Nominal 28 degree horizontal field of view at 1920 pixels."
+    },
+    "flir-VIS": {
+      "channel": "visible",
+      "hfov_deg": 63.7,
+      "pillarboxed": false,
+      "active_width_px": 1920,
+      "fx": 1545.0,
+      "fy": 1671.0,
+      "provenance": "nominal-fov-derived",
+      "notes": "Visible channel. Horizontal and vertical focal lengths differ after image scaling; this preset is not pillarboxed."
+    },
+    "flir-IR": {
+      "channel": "thermal",
+      "hfov_deg": 24.0,
+      "pillarboxed": true,
+      "active_width_px": "per-clip (measured 1359-1378)",
+      "fx": "per-clip (approx 3197-3239)",
+      "fy": "per-clip (from 18 deg VFOV over active rows, ~3409)",
+      "provenance": "nominal-fov-derived",
+      "notes": "Thermal channel. Use each clip active image rectangle. Derive fx from the 24 degree horizontal field of view and fy separately from the 18 degree vertical field of view.",
+      "vfov_deg": 18.0
+    },
+    "sionyx": {
+      "channel": "low_light",
+      "hfov_deg": 44.0,
+      "pillarboxed": false,
+      "active_width_px": 1920,
+      "fx": 2376.1,
+      "fy": 2376.1,
+      "provenance": "nominal-fov-derived",
+      "notes": "Low-light near-infrared imagery; not thermal."
+    },
+    "infrared": {
+      "channel": "low_light",
+      "hfov_deg": 40.0,
+      "pillarboxed": false,
+      "active_width_px": 1920,
+      "fx": 2637.6,
+      "fy": 2637.6,
+      "provenance": "nominal-fov-derived",
+      "notes": "Low-light near-infrared imagery; not thermal."
+    }
+  },
+  "distortion": {
+    "model": "none",
+    "notes": "No distortion coefficients are available for any preset. The baseline runs a pinhole model with zero distortion. Estimating distortion is left to challenge participants."
+  },
+  "principal_point": {
+    "policy": "centre of the active region",
+    "notes": "Nominal image centre; for pillarboxed clips use the centre of the active image."
+  }
+}

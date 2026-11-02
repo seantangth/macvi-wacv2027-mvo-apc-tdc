@@ -1,0 +1,15 @@
+# GPU stages (10, 11, 30): created by reproduce/gpu_box.sh (python 3.10 venv .venvV); versions as used on the development GPU box (Ubuntu 22.04, NVIDIA A100-40GB, CUDA 12.1 wheels).
+--index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+torchvision==0.20.1
+--extra-index-url https://pypi.org/simple
+numpy<2
+opencv-python-headless==4.10.0.84
+pillow
+huggingface_hub
+einops
+safetensors
+tqdm
+scipy
+vggt @ git+https://github.com/facebookresearch/vggt.git     # commit recorded by the reproduction run in work/logs/pip_freeze_venvV.txt
+# DPVO (stage 40) has its own environment (python 3.10, torch 2.5.1+cu121, numpy 1.26.4, opencv 4.10.0.84, DPVO @ 859bbbf): see do_dpvo_env() in reproduce/gpu_box.sh
