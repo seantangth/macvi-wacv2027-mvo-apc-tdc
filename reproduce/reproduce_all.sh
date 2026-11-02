@@ -14,7 +14,8 @@ case "$MODE" in
     bash reproduce/00_get_test_data.sh
     if [ "$MODE" = A ]; then mkdir -p "$WORK/vggt" "$WORK/flow" "$WORK/dpvo112"; cp -R "$CACHE/gpu/vggt/." "$WORK/vggt/"; cp "$CACHE/gpu/flow/"*.npz "$WORK/flow/"; cp -R "$CACHE/gpu/dpvo112/." "$WORK/dpvo112/"
     else
-      WORK="$WORK" bash reproduce/gpu_box.sh all          # VGGT windows + focal probe + RAFT flows + DPVO (clip_112)
+      WORK="$WORK" bash reproduce/gpu_box.sh all || echo "WARNING: a GPU stage did not finish (see above)"   # VGGT windows + focal probe + RAFT flows + DPVO (clip_112)
+      if [ ! -f "$WORK/dpvo112/predictions/clip_112.json" ]; then echo "WARNING: no DPVO re-run output -> clip_112 uses the cached DPVO output"; mkdir -p "$WORK/dpvo112"; cp -R "$CACHE/gpu/dpvo112/." "$WORK/dpvo112/"; fi
       [ -x "$ROOT/.venvV/bin/python" ] && export PY="$ROOT/.venvV/bin/python"   # the venv built by gpu_box.sh also has numpy/opencv/torch for the CPU stages
       mkdir -p "$WORK/vggt"; $PY 3_src/mvo_tools/make_gain_table.py --probe "$WORK/vggt/focal_probe_test.json" --out "$WORK/vggt/gain_test.json" > /dev/null
     fi
