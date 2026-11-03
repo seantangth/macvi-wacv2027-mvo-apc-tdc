@@ -9,7 +9,7 @@ from the released test frames. Method summary: [`METHOD.md`](METHOD.md). Factshe
 | final entry | submission #19363, Eligible, 20/20 clips scored, coverage 100 % |
 | SHA-256 of the bundle | `76bbd5836ee27f19b41bbf70914c2d6eccad597feef46a6848f05fd6141d668e` (copy in `expected/`) |
 | code | https://github.com/seantangth/macvi-wacv2027-mvo-apc-tdc (public, MIT) — commit recorded in the factsheet |
-| weights / cache | committed in this repository: `weights/` (our speed models, 1.8 MB), `artifacts/masks_v4/`, `cache/` (verified intermediates, 51 MB). The external checkpoints (VGGT-1B, RAFT-large, DPVO) are downloaded from their official sources and checked by SHA-256 (§3) |
+| weights / cache | committed in this repository: `weights/` (our speed models, 1.8 MB), `artifacts/masks_v4/`, `cache/` (verified intermediates, 51 MB). `weights/` and `cache/` are also mirrored byte for byte on Hugging Face, https://huggingface.co/seantangth/macvi-wacv2027-mvo-apc-tdc (revision `ccb1af6c345f6379cabb5bccd61258aebb26f40e`; `artifacts/` is not mirrored); the scripts read the copies in this repository. The external checkpoints (VGGT-1B, RAFT-large, DPVO) are downloaded from their official sources and checked by SHA-256 (§3) |
 
 The method is **not** a new network. It is a composition of pretrained models and classical estimators that recovers, for every clip, a *heading* ψ(t) and a *relative speed* s(t) and integrates them
 on the water plane, x(t+Δt) = x(t) + s·Δt·[cos ψ, sin ψ]. The leaderboard metric aligns every clip with one global Sim(3) transform, so absolute scale does not matter: only the heading and the
@@ -84,6 +84,13 @@ Per-clip fixed decisions (lists of clips; disclosed in the factsheet and visible
 
 No external dataset is used. Our own weights are fitted on the **training split only** (`reproduce/train_speed_models.sh`; refit of the ridge model is byte-identical, retraining the CNN with the same seeds reproduces
 all 112 speed profiles byte-identically). `weights/external_weights.yaml` lists the public checkpoints.
+
+Hugging Face mirror of `weights/` and `cache/` (public model repository, one upload commit): https://huggingface.co/seantangth/macvi-wacv2027-mvo-apc-tdc at revision `ccb1af6c345f6379cabb5bccd61258aebb26f40e`. Check that it equals the copies here (prints nothing; run on 2026-11-03):
+
+```bash
+hf download seantangth/macvi-wacv2027-mvo-apc-tdc --revision ccb1af6c345f6379cabb5bccd61258aebb26f40e --local-dir hf_mirror
+diff -r hf_mirror/weights weights && diff -r hf_mirror/cache cache
+```
 
 ## 4. Scalar constants fitted on the training split
 
